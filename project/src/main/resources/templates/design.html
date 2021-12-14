@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор сбора</title>
+</head>
+<body>
+<h1>Соберите свой персональный заказ!</h1>
+<img th:src="@{/images/des.jpg}"/>
+
+
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+<form th:method="POST" th:object="${design}" th:action="@{/design}" id="drugForm">
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('gears')}"
+          th:errors="*{gears}">Ingredient Error</span>
+
+    <div class="grid">
+        <div class="ingredient-group" id="expectorants">
+            <h3>Выберите наживку:</h3>
+            <div th:each="gears : ${expectorants}">
+                <input name="constituents" type="checkbox" th:value="${gears.id}" />
+                <span th:text="${gears.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="cardiovascular_diseases">
+            <h3>Выберите вид лески:</h3>
+            <div th:each="gears : ${cardiovascular_diseases}">
+                <input name="constituents" type="checkbox" th:value="${gears.id}" />
+                <span th:text="${gears.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+
+        <div class="ingredient-group" id="anti_inflammatory">
+            <h3>Выберите снасть:</h3>
+            <div th:each="gears : ${anti_inflammatory}">
+                <input name="constituents" type="checkbox" th:value="${gears.id}" />
+                <span th:text="${gears.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h3>Укажите название вашего сбора:</h3>
+        <input type="text" th:field="*{name}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Имя введено не корректно.</span>
+        <br/>
+        <button>Отправить</button>
+    </div>
+</form>
+</body>
+</html>

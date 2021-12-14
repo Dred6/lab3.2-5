@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой магазин</title>
+</head>
+<body>
+    <h1 align="center">Добро пожаловать в интернет-магазин "Рыба моя"</h1>
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+        <input th:href = "@{/discountList}" type="submit" value="Logout"/>
+    </form>
+
+    <a th:href="@{/design}" id="design">Создай свой сбор</a>
+    <img src="/images/home.png" width="1300" height="600"/>
+</body>
+</html>

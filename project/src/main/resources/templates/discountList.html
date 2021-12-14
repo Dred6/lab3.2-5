@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DF</title>
+</head>
+<body>
+<h1>Коды скидок:</h1>
+
+<ul>
+    <li th:each="code : ${codes}">
+        Используйте код <b>"<span th:text="${code.key}"></span>"</b> для
+        <span th:text="${code.value}"></span>% скидки вашего заказа.</li>
+</ul>
+</body>
+</html>

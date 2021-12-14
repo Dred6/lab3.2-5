@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рыбаловный заказ</title>
+</head>
+<body>
+<h1>Ваши заказы</h1>
+
+<ul>
+    <li th:each="order : ${orders}">
+        <span th:text="${order.placedAt}">DATE</span> -
+        <span th:text="${order.deliveryName}">NAME</span>
+        <ul>
+            <li th:each="drugFee : ${order.drugFee}">
+                <span th:text="${drugFee.name}"></span> :
+                <span th:each="constituents : ${drugFee.constituents}">
+              <span th:text="${constituents.name}">INGREDIENT</span>,
+            </span>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
